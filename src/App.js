@@ -11,24 +11,37 @@ class App extends Component {
 
   state = {
     image: clouds,
-    count: 0
+    count: 0,
+    latitude: "",
+    longitude: ""
   }
 
 
   componentDidMount() {
     API.getImage().then(res => {
-      console.log(res.data)
       const image = res.data.photos.photo[this.state.count].url_l
-      this.setState({ image: image });
+      const latitude = res.data.photos.photo[this.state.count].latitude
+      const longitude = res.data.photos.photo[this.state.count].longitude
+      this.setState({ 
+        image,
+        latitude,
+        longitude
+       });
     })
   }
 
   handleIncrement = () =>{
     this.setState({ count: this.state.count + 1 });
-    console.log(this.state.count)
     API.getImage().then(res => {
       const image = res.data.photos.photo[this.state.count].url_l
-      this.setState({ image: image });
+      const latitude = res.data.photos.photo[this.state.count].latitude
+      const longitude = res.data.photos.photo[this.state.count].longitude
+      this.setState({ 
+        image,
+        latitude,
+        longitude
+       });
+       console.log(this.state.latitude)
     })
   }
 
@@ -45,6 +58,8 @@ class App extends Component {
           background={this.state.image}
           button={"CONTINUE"}
           handleIncrement={this.handleIncrement}
+          latitude={this.state.latitude}
+          longitude={this.state.longitude}
         />
         <Section
           title="Add your trips"
@@ -55,7 +70,8 @@ class App extends Component {
           background={this.state.image}
           button={"CONTINUE"}
           handleIncrement={this.handleIncrement}
-          
+          latitude={this.state.latitude}
+          longitude={this.state.longitude}
         />
         <Section
           title="Customize your widgets"
@@ -66,6 +82,8 @@ class App extends Component {
           background={this.state.image}
           button={"CONTINUE"}
           handleIncrement={this.handleIncrement}
+          latitude={this.state.latitude}
+          longitude={this.state.longitude}
         />
         <Section
           title="For more features check out the Premium version"
@@ -76,6 +94,8 @@ class App extends Component {
           background={this.state.image}
           button={"CONTINUE"}
           handleIncrement={this.handleIncrement}
+          latitude={this.state.latitude}
+          longitude={this.state.longitude}
         />
         <Section
           title="Paradise Awaits"
@@ -86,6 +106,8 @@ class App extends Component {
           background={this.state.image}
           button={"DOWNLOAD"}
           handleIncrement={this.handleIncrement}
+          latitude={this.state.latitude}
+          longitude={this.state.longitude}
         />
         <button className="btn btn-primary">
             Increment
