@@ -28,7 +28,7 @@ class App extends Component {
         console.log(res.data.main.temp)
         let weather = res.data.weather[0].description
         weather = weather.charAt(0).toUpperCase() + weather.slice(1);
-        const temp = Math.round(res.data.main.temp * 9/5 - 459.67)
+        const temp = Math.round(res.data.main.temp * 9/5 - 459.67)+"°F"
         console.log(temp)
         this.setState({ 
           image,
@@ -51,7 +51,7 @@ class App extends Component {
         console.log(res.data.main.temp)
         let weather = res.data.weather[0].description
         weather = weather.charAt(0).toUpperCase() + weather.slice(1);
-        const temp = Math.round(res.data.main.temp * 9/5 - 459.67)
+        const temp = Math.round(res.data.main.temp * 9/5 - 459.67)+"°F"
         console.log(temp)
         this.setState({ 
           image,
