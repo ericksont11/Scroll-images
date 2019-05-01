@@ -19,7 +19,7 @@ export default function Section({ title, subtitle, dark, id, section, handleIncr
             spy={true}
             smooth={true}
             offset={-70}
-            duration={2000}
+            duration={400}
           >
             <div className="continue" onClick={handleIncrement}>
               {button}
