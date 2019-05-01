@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import clouds from "./images/clouds.jpg";
-import iceland from "./images/iceland.jpg";
-import japan from "./images/japan.jpg";
-import portugal from "./images/portugal.jpg";
-import chile from "./images/chile.jpg";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Section from "./Components/Section";
 import Text from "./Text";
 import API from "./utils/API"
+require('dotenv').config()
 
 class App extends Component {
 
@@ -20,6 +17,7 @@ class App extends Component {
 
   componentDidMount() {
     API.getImage().then(res => {
+      console.log(res.data)
       const image = res.data.photos.photo[this.state.count].url_l
       this.setState({ image: image });
     })
