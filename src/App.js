@@ -49,7 +49,8 @@ class App extends Component {
       const longitude = res.data.photos.photo[this.state.count].longitude
       API.getWeather(latitude, longitude).then(res => {
         console.log(res.data.main.temp)
-        const weather = res.data.weather[0].description
+        let weather = res.data.weather[0].description
+        weather = weather.charAt(0).toUpperCase() + weather.slice(1);
         const temp = Math.round(res.data.main.temp * 9/5 - 459.67)
         console.log(temp)
         this.setState({ 
