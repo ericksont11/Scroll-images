@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-scroll";
 
-export default function Section({ title, subtitle, dark, id, section, handleIncrement, button, background, latitude, longitude }) {
+export default function Section({ title, subtitle, dark, id, section, handleIncrement,
+                                  temp, weather, button, background, latitude, longitude }) {
 
   return (
     <div className={"section" + (dark ? " section-dark" : "")}>
@@ -26,6 +27,8 @@ export default function Section({ title, subtitle, dark, id, section, handleIncr
             </div>
           </Link>
           <h5 className="center">Latitude: {latitude} Longitude: {longitude}</h5>
+          <h5 className="center">Weather Conditions: {weather}</h5>
+          <h5 className="center">Temperature: {temp}</h5>
         </div>
       </div>
     </div>

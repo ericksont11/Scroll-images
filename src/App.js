@@ -13,7 +13,9 @@ class App extends Component {
     image: clouds,
     count: 0,
     latitude: "",
-    longitude: ""
+    longitude: "",
+    temp: "",
+    weather: ""
   }
 
 
@@ -22,11 +24,20 @@ class App extends Component {
       const image = res.data.photos.photo[this.state.count].url_l
       const latitude = res.data.photos.photo[this.state.count].latitude
       const longitude = res.data.photos.photo[this.state.count].longitude
-      this.setState({ 
-        image,
-        latitude,
-        longitude
-       });
+      API.getWeather(latitude, longitude).then(res => {
+        console.log(res.data.main.temp)
+        let weather = res.data.weather[0].description
+        weather = weather.charAt(0).toUpperCase() + weather.slice(1);
+        const temp = Math.round(res.data.main.temp * 9/5 - 459.67)
+        console.log(temp)
+        this.setState({ 
+          image,
+          latitude,
+          longitude,
+          weather,
+          temp
+        });
+      })
     })
   }
 
@@ -36,12 +47,19 @@ class App extends Component {
       const image = res.data.photos.photo[this.state.count].url_l
       const latitude = res.data.photos.photo[this.state.count].latitude
       const longitude = res.data.photos.photo[this.state.count].longitude
-      this.setState({ 
-        image,
-        latitude,
-        longitude
-       });
-       console.log(this.state.latitude)
+      API.getWeather(latitude, longitude).then(res => {
+        console.log(res.data.main.temp)
+        const weather = res.data.weather[0].description
+        const temp = Math.round(res.data.main.temp * 9/5 - 459.67)
+        console.log(temp)
+        this.setState({ 
+          image,
+          latitude,
+          longitude,
+          weather,
+          temp
+        });
+      })
     })
   }
 
@@ -60,6 +78,8 @@ class App extends Component {
           handleIncrement={this.handleIncrement}
           latitude={this.state.latitude}
           longitude={this.state.longitude}
+          temp={this.state.temp}
+          weather={this.state.weather}
         />
         <Section
           title="Add your trips"
@@ -72,6 +92,8 @@ class App extends Component {
           handleIncrement={this.handleIncrement}
           latitude={this.state.latitude}
           longitude={this.state.longitude}
+          temp={this.state.temp}
+          weather={this.state.weather}
         />
         <Section
           title="Customize your widgets"
@@ -84,6 +106,8 @@ class App extends Component {
           handleIncrement={this.handleIncrement}
           latitude={this.state.latitude}
           longitude={this.state.longitude}
+          temp={this.state.temp}
+          weather={this.state.weather}
         />
         <Section
           title="For more features check out the Premium version"
@@ -96,6 +120,8 @@ class App extends Component {
           handleIncrement={this.handleIncrement}
           latitude={this.state.latitude}
           longitude={this.state.longitude}
+          temp={this.state.temp}
+          weather={this.state.weather}
         />
         <Section
           title="Paradise Awaits"
@@ -108,6 +134,8 @@ class App extends Component {
           handleIncrement={this.handleIncrement}
           latitude={this.state.latitude}
           longitude={this.state.longitude}
+          temp={this.state.temp}
+          weather={this.state.weather}
         />
         <button className="btn btn-primary">
             Increment

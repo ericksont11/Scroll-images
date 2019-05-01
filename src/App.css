@@ -1,6 +1,9 @@
 :root {
   --off-white: #fafafa;
 }
+body {
+  overflow: hidden;
+}
 .nav {
   background-color: var(--off-white);
   position: sticky;
