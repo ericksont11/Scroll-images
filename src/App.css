@@ -9,8 +9,8 @@ body {
   position: sticky;
   top: 0px;
   width: 100%;
-  height: 80px;
-  z-index: 1000;
+  height: 75px;
+  z-index: 2;
   box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.15);
 }
 
@@ -66,7 +66,7 @@ p {
 .section-content {
   margin: 0 auto;
   padding-top: 5px;
-  padding-bottom: 1000px;
+  padding-bottom: 1400px;
 }
 
 img {
@@ -99,8 +99,8 @@ img {
 }
 
 .section-content {
-  width: 80vw;
-  height: 90vh;
+  width: 100vw;
+  height: 9vh;
   padding-top: none;
   padding-bottom: none
 }
@@ -111,10 +111,10 @@ h1 {
 
 .after {
   content: "";
-  opacity: 0.2;
+  opacity: 0.15;
   padding-top: 0;
-  height:90vh;
-  width: 80vw;
+  height:95vh;
+  width: 100vw;
   position: absolute; 
   z-index:0;
   pointer-events: none;
@@ -123,4 +123,9 @@ h1 {
 .Calendar {
   margin-left: 28.5vw;
   width: 40vw
+}
+
+.width80 {
+  width: 70vw;
+  margin-left: 15vw
 }

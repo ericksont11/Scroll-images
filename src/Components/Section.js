@@ -12,7 +12,9 @@ export default function Section({ title, subtitle, dark, id, section, handleIncr
           }}>
         </div>
         <h1 className="center">{title}</h1>
-        <p className="center">{subtitle}</p>
+        <div className="width70">
+          <p className="center">{subtitle}</p>
+        </div>
         <div>
           <Link
             activeClass="active"
@@ -26,7 +28,7 @@ export default function Section({ title, subtitle, dark, id, section, handleIncr
               {button}
             </div>
           </Link>
-          <h5 className="center">Latitude: {latitude} Longitude: {longitude}</h5>
+          <h5 className="center">Latitude: {latitude}  Longitude: {longitude}</h5>
           <h5 className="center">Weather Conditions: {weather}</h5>
           <h5 className="center">Temperature: {temp}</h5>
         </div>

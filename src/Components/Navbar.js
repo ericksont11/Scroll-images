@@ -21,7 +21,7 @@ export default class Navbar extends Component {
                 to="section1"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={-85}
                 duration={500}
               >
                 About
@@ -33,7 +33,7 @@ export default class Navbar extends Component {
                 to="section2"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={0}
                 duration={500}
               >
                 Trips
@@ -45,7 +45,7 @@ export default class Navbar extends Component {
                 to="section3"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={0}
                 duration={500}
               >
                 Widgets
@@ -57,7 +57,7 @@ export default class Navbar extends Component {
                 to="section4"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={0}
                 duration={500}
               >
                 Premium
@@ -69,7 +69,7 @@ export default class Navbar extends Component {
                 to="section5"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={0}
                 duration={500}
               >
                 Download
