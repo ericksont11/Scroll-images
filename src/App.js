@@ -15,7 +15,8 @@ class App extends Component {
     latitude: "",
     longitude: "",
     temp: "",
-    weather: ""
+    weather: "",
+    date: new Date(),
   }
 
 
@@ -25,11 +26,9 @@ class App extends Component {
       const latitude = res.data.photos.photo[this.state.count].latitude
       const longitude = res.data.photos.photo[this.state.count].longitude
       API.getWeather(latitude, longitude).then(res => {
-        console.log(res.data.main.temp)
         let weather = res.data.weather[0].description
         weather = weather.charAt(0).toUpperCase() + weather.slice(1);
         const temp = Math.round(res.data.main.temp * 9/5 - 459.67)+"°F"
-        console.log(temp)
         this.setState({ 
           image,
           latitude,
@@ -42,6 +41,7 @@ class App extends Component {
   }
 
   handleIncrement = () =>{
+    console.log(this.state.src)
     this.setState({ count: this.state.count + 1 });
     API.getImage().then(res => {
       const image = res.data.photos.photo[this.state.count].url_l
@@ -58,7 +58,7 @@ class App extends Component {
           latitude,
           longitude,
           weather,
-          temp
+          temp,
         });
       })
     })

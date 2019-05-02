@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-scroll";
 
 export default function Section({ title, subtitle, dark, id, section, handleIncrement,
-                                  temp, weather, button, background, latitude, longitude }) {
+                                  temp, weather, button, background, latitude, longitude, src }) {
 
   return (
     <div className={"section" + (dark ? " section-dark" : "")}>
@@ -22,7 +22,7 @@ export default function Section({ title, subtitle, dark, id, section, handleIncr
             spy={true}
             smooth={true}
             offset={-70}
-            duration={800}
+            duration={600}
           >
             <div className="continue" onClick={handleIncrement}>
               {button}
