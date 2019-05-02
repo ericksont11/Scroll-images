@@ -1,14 +1,7 @@
 import React, { Component } from "react";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 
 export default class Navbar extends Component {
-
-  // componentWillMount() {
-  //   scroll.scrollTo(2800, {
-  //     duration: 30000,
-  //     smooth: true
-  //   })
-  // }
 
   render() {
     return (
@@ -21,7 +14,7 @@ export default class Navbar extends Component {
                 to="section1"
                 spy={true}
                 smooth={true}
-                offset={-85}
+                offset={-70}
                 duration={500}
               >
                 About
@@ -33,7 +26,7 @@ export default class Navbar extends Component {
                 to="section2"
                 spy={true}
                 smooth={true}
-                offset={0}
+                offset={-70}
                 duration={500}
               >
                 Trips
@@ -45,7 +38,7 @@ export default class Navbar extends Component {
                 to="section3"
                 spy={true}
                 smooth={true}
-                offset={0}
+                offset={-70}
                 duration={500}
               >
                 Widgets
@@ -57,7 +50,7 @@ export default class Navbar extends Component {
                 to="section4"
                 spy={true}
                 smooth={true}
-                offset={0}
+                offset={-70}
                 duration={500}
               >
                 Premium
@@ -69,7 +62,7 @@ export default class Navbar extends Component {
                 to="section5"
                 spy={true}
                 smooth={true}
-                offset={0}
+                offset={-70}
                 duration={500}
               >
                 Download
