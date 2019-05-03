@@ -27,8 +27,12 @@ p, h1, .continue {
   font-size: 3vw;
 }
 
+.weatherText {
+  font-size: 1vw;
+}
+
 #weatherBox {
-  padding: 0.5vw;
+  padding: 1.5vw;
   position: fixed;
   background-color: gray;
   width: auto;
@@ -110,3 +114,24 @@ h1 {
   position: absolute;
   margin-top: 20vh;
 }
+
+@media screen and (max-height: 400px)
+{
+  .verticalCenter {
+    margin-top: 10vh;
+  }
+  
+  p, h1, .continue {
+    font-size: 5vh;
+  }
+
+  .title {
+    font-size: 5vh;
+  }
+
+  .weatherText {
+    font-size: 5vh;
+  }
+}
+
+

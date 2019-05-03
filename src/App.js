@@ -100,8 +100,8 @@ class App extends Component {
       <div className="App">
         <div id="weatherBox" style ={{ visibility:"hidden"}}>
             <div>
-              <p className="center">Weather Conditions: {this.state.weather}</p>
-              <p className="center">Temperature: {this.state.temp}</p>
+              <div className="center weatherText">Weather Conditions: {this.state.weather}</div>
+              <div className="center weatherText">Temperature: {this.state.temp}</div>
           </div>
         </div>
         <img alt="Weather" id="cloud" src={Cloud} onClick={this.handleVisible}/>
