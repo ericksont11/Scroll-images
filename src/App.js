@@ -41,6 +41,11 @@ class App extends Component {
   }
 
   componentDidMount() {
+    scrollToElement('#section1', {
+      offset: 0,
+      ease: 'out-bounce',
+      duration: 1
+    });
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions.bind(this));
     API.getImage().then(res => {
