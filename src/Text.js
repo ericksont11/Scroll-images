@@ -12,7 +12,5 @@ const Text = {
     premium: `Our premium version gives you access to many more features and widgets!`,
 
     download: `Hit the button below to head to the Chrome store`,
-
-
 } 
 export default Text;

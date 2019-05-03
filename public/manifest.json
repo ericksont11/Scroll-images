@@ -1,8 +1,22 @@
+    
 {
-  "name": "Tripster",
-  "version": "1.0",
-  "manifest_version": 2,
-  "chrome_url_overrides": {
-    "newtab": "index.html"
-  }
+    "manifest_version": 2,
+    "name": "Tripster Life",
+    "description": "Display beautiful images",
+    "version": "0.1",
+    "chrome_url_overrides": {
+      "newtab": "index.html"
+    },
+    
+    "browser_action": {
+      "default_icon": "icon.png"
+    },
+    "permissions":[
+      "tabs",
+      "storage"
+    ],
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    }
 }

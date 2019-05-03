@@ -1,18 +1,17 @@
 import React, { Component } from "react";
-import clouds from "./images/clouds.jpg";
 import "./App.css";
-import Section from "./Components/Section";
-import Text from "./Text";
+import Section from "./components/section";
+import PopUp from "./components/popup";
 import API from "./utils/API"
-import Cloud from "./images/cloud.png";
+import Cloud from "./utils/cloud.png"
+import World from "./utils/world.png"
 import scrollToElement from 'scroll-to-element'
 require('dotenv').config()
 
 
 class App extends Component {
-
   state = {
-    image: clouds,
+    image: "",
     count: 0,
     latitude: "",
     longitude: "",
@@ -22,7 +21,7 @@ class App extends Component {
   }
 
   updateDimensions() {
-    if(window.innerHeight < 10000) {
+    if(window.innerHeight) {
       if (this.state.count > 4) {
         const num = this.state.count % 5
         scrollToElement('#section'+(num + 1), {
@@ -68,9 +67,10 @@ class App extends Component {
   }
 
   handleIncrement = () =>{
-
-    const elem = document.getElementById("weatherBox");
-    elem.style.visibility = 'hidden';
+    const weatherBox = document.getElementById("weatherBox");
+    weatherBox.style.visibility = 'hidden';
+    const locationBox = document.getElementById("locationBox");
+    locationBox.style.visibility = 'hidden';
     this.setState({ count: this.state.count + 1 });
     API.getImage().then(res => {
       const image = res.data.photos.photo[this.state.count].url_l
@@ -91,98 +91,101 @@ class App extends Component {
     })
   }
 
-  handleVisible = () => {
-      const elem = document.getElementById("weatherBox");
-      if (elem.style.visibility === 'visible'){
-        elem.style.visibility = 'hidden';
-      } else {
-        elem.style.visibility = 'visible';
-      }
+  handleWeatherVisible = () => {
+    const locationBox = document.getElementById("locationBox");
+    locationBox.style.visibility = 'hidden';
+
+    const elem = document.getElementById("weatherBox");
+    if (elem.style.visibility === 'visible'){
+      elem.style.visibility = 'hidden';
+    } else {
+      elem.style.visibility = 'visible';
+    }
+  }
+
+  handleLocationVisible = () => {
+    const weatherBox = document.getElementById("weatherBox");
+    weatherBox.style.visibility = 'hidden';
+
+    const elem = document.getElementById("locationBox");
+    if (elem.style.visibility === 'visible'){
+      elem.style.visibility = 'hidden';
+    } else {
+      elem.style.visibility = 'visible';
+    }
   }
 
   render() {
     return (
       <div className="App">
-        <div id="weatherBox" style ={{ visibility:"hidden"}}>
-            <div>
-              <div className="center weatherText">Weather Conditions: {this.state.weather}</div>
-              <div className="center weatherText">Temperature: {this.state.temp}</div>
-          </div>
+        <div className="left">
+          <img alt="Weather" id="cloud" src={Cloud} onClick={this.handleWeatherVisible}/>
+          <img alt="Location" id="world" src={World} onClick={this.handleLocationVisible}/>
         </div>
-        <img alt="Weather" id="cloud" src={Cloud} onClick={this.handleVisible}/>
+        <PopUp 
+          id={"weatherBox"}
+          datumType={"Weather"}
+          secondDatumType={"Temp"}
+          datum={this.state.weather}
+          secondDatum={this.state.temp}
+        />
+        <PopUp 
+          id={"locationBox"}
+          datumType={"Latitude"}
+          secondDatumType={"Latitude"}
+          datum={this.state.latitude}
+          secondDatum={this.state.longitude}
+        />
+        <img alt="Weather" id="cloud" src={Cloud} onClick={this.handleWeatherVisible}/>
+        <img alt="Weather" id="world" src={World} onClick={this.handleLocationVisible}/>
         <Section
-          title="Welcome to Tripster"
-          subtitle={Text.intro}
+          title="TRIPSTER"
           dark={true}
           id="section1"
           section="section2"
           background={this.state.image}
           button={"CONTINUE"}
           handleIncrement={this.handleIncrement}
-          latitude={this.state.latitude}
-          longitude={this.state.longitude}
-          temp={this.state.temp}
-          weather={this.state.weather}
           count={0}
         />
         <Section
-          title="Add your trips"
-          subtitle={Text.trips}
+          title="TRIPSTER"
           dark={true}
           id="section2"
           section="section3"
           background={this.state.image}
           button={"CONTINUE"}
           handleIncrement={this.handleIncrement}
-          latitude={this.state.latitude}
-          longitude={this.state.longitude}
-          temp={this.state.temp}
-          weather={this.state.weather}
           count={1}
         />
         <Section
-          title="Customize your widgets"
-          subtitle={Text.widgets}
+          title="TRIPSTER"
           dark={true}
           id="section3"
           section="section4"
           background={this.state.image}
           button={"CONTINUE"}
           handleIncrement={this.handleIncrement}
-          latitude={this.state.latitude}
-          longitude={this.state.longitude}
-          temp={this.state.temp}
-          weather={this.state.weather}
           count={2}
         />
         <Section
-          title="For more features check out the Premium version"
-          subtitle={Text.premium}
+          title="TRIPSTER"
           dark={true}
           id="section4"
           section="section5"
           background={this.state.image}
           button={"CONTINUE"}
           handleIncrement={this.handleIncrement}
-          latitude={this.state.latitude}
-          longitude={this.state.longitude}
-          temp={this.state.temp}
-          weather={this.state.weather}
           count={3}
         />
         <Section
-          title="Paradise Awaits"
-          subtitle={Text.download}
+          title="TRIPSTER"
           dark={true}
           id="section5"
           section="section1"
           background={this.state.image}
-          button={"DOWNLOAD"}
+          button={"CONTINUE"}
           handleIncrement={this.handleIncrement}
-          latitude={this.state.latitude}
-          longitude={this.state.longitude}
-          temp={this.state.temp}
-          weather={this.state.weather}
           count={4}
         />
       </div>

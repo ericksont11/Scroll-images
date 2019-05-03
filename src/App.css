@@ -7,13 +7,25 @@ body {
 }
 
 
-#cloud {
-  height: 50px;
+#cloud, #world {
+  height: 5vh;
   width: auto;
-  position: fixed;
-  bottom: 0;
-  left: -18vw;
+  position: relative;
   z-index: 100;
+  top: 82%
+}
+
+.left {
+  width: auto;
+  height: 100%;
+  position: fixed;
+  background-color: black;
+  opacity: 0.4;
+  z-index: 100
+}
+
+#world {
+  top: 85%
 }
 
 p, h1, .continue {
@@ -24,21 +36,21 @@ p, h1, .continue {
 }
 
 .title {
-  font-size: 3vw;
+  font-size: 10vw;
 }
 
 .weatherText {
-  font-size: 1vw;
+  font-size: 1em;
 }
 
-#weatherBox {
+#weatherBox, #locationBox {
   padding: 1.5vw;
   position: fixed;
   background-color: gray;
   width: auto;
   height: auto;
   margin-left: 75px;
-  bottom: 2vh;
+  bottom: 4vh;
   opacity: 0.8;
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -81,11 +93,12 @@ img {
 .section-content {
   width: 100vw;
   height: 100vh;
-  padding-bottom: 150vh;
+  padding-bottom: 200vh;
 }
 
 h1 {
   position: relative;
+  font-size: 10vw;
 }
 
 .after {
@@ -112,34 +125,7 @@ h1 {
 
 .verticalCenter {
   position: absolute;
-  margin-top: 20vh;
-}
-
-@media screen and (max-height: 300px)
-{
-  .verticalCenter {
-    margin-top: 10vh;
-  }
-  
-  p, h1, .continue {
-    font-size: 5vh;
-  }
-
-  .title {
-    font-size: 7vh;
-  }
-
-  .weatherText {
-    font-size: 5vh;
-  }
-}
-
-@media screen and (max-width: 600px) and (min-height: 400px)
-{
-  .verticalCenter {
-    margin-top: 35vh;
-  }
-  
+  margin-top: 30vh;
 }
 
 
