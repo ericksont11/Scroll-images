@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import clouds from "./images/clouds.jpg";
 import "./App.css";
-import Navbar from "./Components/Navbar";
 import Section from "./Components/Section";
 import Text from "./Text";
 import API from "./utils/API"
 import Cloud from "./images/cloud.png";
+import scrollToElement from 'scroll-to-element'
 require('dotenv').config()
+
 
 class App extends Component {
 
@@ -20,8 +21,28 @@ class App extends Component {
     date: new Date(),
   }
 
+  updateDimensions() {
+    if(window.innerHeight < 10000) {
+      if (this.state.count > 4) {
+        const num = this.state.count % 5
+        scrollToElement('#section'+(num + 1), {
+          offset: 0,
+          ease: 'out-bounce',
+          duration: 1
+        });
+      } else {
+        scrollToElement('#section'+(this.state.count+1), {
+          offset: 0,
+          ease: 'out-bounce',
+          duration: 1
+        });
+      }
+    }
+  }
 
   componentDidMount() {
+    this.updateDimensions();
+    window.addEventListener("resize", this.updateDimensions.bind(this));
     API.getImage().then(res => {
       const image = res.data.photos.photo[this.state.count].url_l
       const latitude = res.data.photos.photo[this.state.count].latitude
@@ -42,6 +63,7 @@ class App extends Component {
   }
 
   handleIncrement = () =>{
+
     const elem = document.getElementById("weatherBox");
     elem.style.visibility = 'hidden';
     this.setState({ count: this.state.count + 1 });
@@ -65,16 +87,12 @@ class App extends Component {
   }
 
   handleVisible = () => {
-
       const elem = document.getElementById("weatherBox");
-      console.log(elem)
-
       if (elem.style.visibility === 'visible'){
         elem.style.visibility = 'hidden';
       } else {
         elem.style.visibility = 'visible';
       }
-
   }
 
   render() {
@@ -82,8 +100,8 @@ class App extends Component {
       <div className="App">
         <div id="weatherBox" style ={{ visibility:"hidden"}}>
             <div>
-              <h5 className="center">Weather Conditions: {this.state.weather}</h5>
-              <h5 className="center">Temperature: {this.state.temp}</h5>
+              <p className="center">Weather Conditions: {this.state.weather}</p>
+              <p className="center">Temperature: {this.state.temp}</p>
           </div>
         </div>
         <img alt="Weather" id="cloud" src={Cloud} onClick={this.handleVisible}/>
@@ -162,9 +180,6 @@ class App extends Component {
           weather={this.state.weather}
           count={4}
         />
-        <button className="btn btn-primary">
-            Increment
-        </button>
       </div>
     );
   }

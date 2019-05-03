@@ -2,18 +2,18 @@ import React from "react";
 import { Link } from "react-scroll";
 
 export default function Section({ title, subtitle, dark, id, section, handleIncrement,
-                                  temp, weather, button, background, latitude, longitude, count }) {
+                                  temp, weather, button, background, latitude, longitude, count, marginTop }) {
 
   return (
-    <div className={"section" + (dark ? " section-dark" : "")}>
-      <div className="section-content" id={id}>
+    <div className={"section" + (dark ? " section-dark" : "")} style = {{ top: marginTop, position: "relative"}}>
+      <div className="section-content" id={id} >
       <div className="after"  style = {{ backgroundImage: 'url(' + background + ')', 
             backgroundSize: '100% 100%'
           }}>
         </div>
         <div className="verticalCenter width70">
-          <h1 className="center">{title}</h1>
-            <p className="center">{subtitle}</p>
+          <div className="center title">{title}</div>
+          <p className="center">{subtitle}</p>
        
           <div>
             <Link
@@ -28,7 +28,7 @@ export default function Section({ title, subtitle, dark, id, section, handleIncr
                 {button}
               </div>
             </Link>
-            <h5 className="center">Latitude: {latitude}  Longitude: {longitude}</h5>
+            <p className="center">Latitude: {latitude}  Longitude: {longitude}</p>
           </div>
         </div>
       </div>
