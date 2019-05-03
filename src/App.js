@@ -5,6 +5,7 @@ import Navbar from "./Components/Navbar";
 import Section from "./Components/Section";
 import Text from "./Text";
 import API from "./utils/API"
+import Cloud from "./images/cloud.png";
 require('dotenv').config()
 
 class App extends Component {
@@ -41,18 +42,17 @@ class App extends Component {
   }
 
   handleIncrement = () =>{
-    console.log(this.state.src)
+    const elem = document.getElementById("weatherBox");
+    elem.style.visibility = 'hidden';
     this.setState({ count: this.state.count + 1 });
     API.getImage().then(res => {
       const image = res.data.photos.photo[this.state.count].url_l
       const latitude = res.data.photos.photo[this.state.count].latitude
       const longitude = res.data.photos.photo[this.state.count].longitude
       API.getWeather(latitude, longitude).then(res => {
-        console.log(res.data.main.temp)
         let weather = res.data.weather[0].description
         weather = weather.charAt(0).toUpperCase() + weather.slice(1);
         const temp = Math.round(res.data.main.temp * 9/5 - 459.67)+"°F"
-        console.log(temp)
         this.setState({ 
           image,
           latitude,
@@ -64,10 +64,29 @@ class App extends Component {
     })
   }
 
+  handleVisible = () => {
+
+      const elem = document.getElementById("weatherBox");
+      console.log(elem)
+
+      if (elem.style.visibility === 'visible'){
+        elem.style.visibility = 'hidden';
+      } else {
+        elem.style.visibility = 'visible';
+      }
+
+  }
+
   render() {
     return (
       <div className="App">
-        <Navbar />
+        <div id="weatherBox" style ={{ visibility:"hidden"}}>
+            <div>
+              <h5 className="center">Weather Conditions: {this.state.weather}</h5>
+              <h5 className="center">Temperature: {this.state.temp}</h5>
+          </div>
+        </div>
+        <img alt="Weather" id="cloud" src={Cloud} onClick={this.handleVisible}/>
         <Section
           title="Welcome to Tripster"
           subtitle={Text.intro}
@@ -81,6 +100,7 @@ class App extends Component {
           longitude={this.state.longitude}
           temp={this.state.temp}
           weather={this.state.weather}
+          count={0}
         />
         <Section
           title="Add your trips"
@@ -95,6 +115,7 @@ class App extends Component {
           longitude={this.state.longitude}
           temp={this.state.temp}
           weather={this.state.weather}
+          count={1}
         />
         <Section
           title="Customize your widgets"
@@ -109,6 +130,7 @@ class App extends Component {
           longitude={this.state.longitude}
           temp={this.state.temp}
           weather={this.state.weather}
+          count={2}
         />
         <Section
           title="For more features check out the Premium version"
@@ -123,6 +145,7 @@ class App extends Component {
           longitude={this.state.longitude}
           temp={this.state.temp}
           weather={this.state.weather}
+          count={3}
         />
         <Section
           title="Paradise Awaits"
@@ -137,6 +160,7 @@ class App extends Component {
           longitude={this.state.longitude}
           temp={this.state.temp}
           weather={this.state.weather}
+          count={4}
         />
         <button className="btn btn-primary">
             Increment
